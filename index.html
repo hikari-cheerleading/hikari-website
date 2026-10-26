@@ -2330,10 +2330,31 @@
     .team-detail-body { grid-template-columns: 1fr; padding: 32px 20px; gap: 32px; }
     .team-detail-info-strip { flex-wrap: wrap; }
     .info-strip-item { flex: none; width: 50%; border-bottom: 1px solid var(--border); }
-    .team-detail-hero { grid-template-columns: 1fr; height: auto; }
-    .td-hero-photo { height: 240px; }
-    .td-hero-info { padding: 32px 24px; align-items: center; text-align: center; }
-    .td-hero-logo { width: 240px; margin: 0 auto; }
+    /* Team detail hero — full-bleed photo, dark gradient at bottom, logo overlaid */
+    .team-detail-hero { grid-template-columns: 1fr; height: auto; position: relative; }
+    .td-hero-photo { height: 320px; grid-row: 1; grid-column: 1; position: relative; }
+    .td-hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 30%, rgba(10,18,40,0.92) 100%);
+      z-index: 1;
+    }
+    .td-hero-info {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: transparent;
+      padding: 0;
+      width: auto;
+      height: auto;
+      align-items: flex-start;
+      justify-content: flex-end;
+      box-shadow: none;
+      border-radius: 0;
+      z-index: 2;
+    }
+    .td-hero-logo { width: 170px !important; margin: 0 !important; }
     .photo-gallery { grid-template-columns: 1fr 1fr; }
 
     /* Join */
@@ -4268,7 +4289,7 @@
     const logoImg = document.querySelector('#page-team-detail .td-hero-logo');
     logoImg.src = t.logo || '';
     logoImg.alt = 'Hikari ' + t.name;
-    logoImg.style.marginLeft = t.logoOffset ? `${-(t.logoOffset * 480).toFixed(0)}px` : '0';
+    logoImg.style.marginLeft = (t.logoOffset && window.innerWidth > 900) ? `${-(t.logoOffset * 480).toFixed(0)}px` : '0';
 
     // info strip
     const strip = document.querySelectorAll('#page-team-detail .info-strip-value');
