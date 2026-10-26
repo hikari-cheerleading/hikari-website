@@ -2235,7 +2235,7 @@
       background: linear-gradient(to bottom, rgba(10,18,40,.55) 0%, rgba(10,18,40,.45) 60%, rgba(10,18,40,.7) 100%);
     }
     .hero-left {
-      padding: 68px 24px 32px;
+      padding: 20px 24px 28px;
       text-align: left;
       align-items: flex-start;
       position: relative;
@@ -2245,8 +2245,10 @@
       min-height: calc(100svh - 58px - env(safe-area-inset-bottom, 0px));
       justify-content: flex-start;
     }
-    .hero-big-logo { width: 200px; margin-left: -25px; margin-right: 0; }
-    .hero-actions { margin-top: clamp(48px, 12vh, 120px); justify-content: center; align-self: stretch; flex-wrap: wrap; }
+    .hero-big-logo { width: 200px; margin-left: -25px; margin-right: 0; margin-top: -8px; }
+    /* Push text + buttons as a group to the bottom, logo stays at top */
+    .hero h1 { margin-top: auto; }
+    .hero-actions { margin-top: 0; padding-bottom: 48px; justify-content: flex-start; align-self: stretch; flex-wrap: wrap; }
     .hero-stats { align-self: stretch; justify-content: center; margin-top: 16px; padding-top: 20px; }
     nav { height: 56px; }
     nav { padding: 0 20px; }
@@ -2267,6 +2269,10 @@
     .cta-band { flex-direction: column; padding: 56px 0; gap: 24px; }
     .cta-band-inner { padding: 0 20px; flex-direction: column; }
     .cta-band div:last-child { display: flex; gap: 12px; flex-wrap: wrap; }
+    .cta-band-inner > .btn { width: 100%; box-sizing: border-box; text-align: center; }
+    /* Become a Sponsor custom box — match cta-band margins on mobile */
+    .sponsor-cta { padding: 32px 20px !important; flex-direction: column !important; gap: 24px !important; }
+    .sponsor-cta > .btn { width: 100%; box-sizing: border-box; text-align: center; }
 
     /* Teams overview */
     .teams-grid { grid-template-columns: 1fr 1fr; gap: 16px; background: transparent; }
@@ -3109,7 +3115,7 @@
     <div class="cta-band-inner">
       <div>
         <h2 class="title">Not sure which team fits?</h2>
-        <p>Fill in the registration form and we'll match you with the right team.</p>
+        <p>Fill in the registration form and we'll match you with the right team. Every new athlete gets 2 free trial lessons — no commitment needed until you decide you want to join.</p>
       </div>
       <button class="btn btn-navy" onclick="showPage('join')">Register Now</button>
     </div>
@@ -3880,7 +3886,7 @@
         </div>
       </div>
 
-      <div style="background:var(--navy); border-radius:4px; padding:40px 48px; display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap;">
+      <div class="sponsor-cta" style="background:var(--navy); border-radius:4px; padding:40px 48px; display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap;">
         <div>
           <div style="font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--white); letter-spacing:.04em; margin-bottom:8px;">Become a Sponsor</div>
           <p style="color:rgba(255,255,255,.6); max-width:52ch; margin:0;">Support 60+ athletes in Rotterdam, get your brand in front of an engaged sports community, and contribute to a club built on inclusivity and excellence.</p>
